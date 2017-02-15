@@ -64,7 +64,7 @@ do_start() {
     --pidfile $PIDFILE --exec $DAEMON --name $NAME --user $USER \
     --test > /dev/null \
     || return 1
-  ulimit -s 240
+  do_setlimits
   start-stop-daemon --start --quiet \
     --pidfile $PIDFILE --exec $DAEMON --name $NAME --user $USER \
     --chdir $WORKDIR -- $DAEMON_ARGS $DAEMON_OPTS \
